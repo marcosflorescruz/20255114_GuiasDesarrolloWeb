@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Work+Sans:wght@400;600&display=swap');
+
+body{
+    margin: 0;
+    font-size: 16px;
+    color: #2B2B2B;
+    background-color: #FFFFFF;
+    line-height: 1.6;
+    font-family: "Work Sand", sans-serif;
+}
+
+h1, h2, h3{
+    color: #C0392B;
+    margin-top: 0;
+}
+h1{font-size: 32px;}
+h2{font-size: 26px;}
+h3{font-size: 18px;}
+
+a{
+    text-decoration: none;
+}
+
+.contenedor{
+    max-width: 720px;
+    margin: 10px auto;
+    padding: 24px;
+}
+
+#encabezado{
+    background-color: #E67E22;
+    border-bottom: 4px solid #D35400;
+}
+
+#encabezado .contenedor{
+    text-align: center;
+}
+
+.marca{
+    font-size: 26px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#navegacion{
+    margin-top: 10px;
+}
+
+.seccion-clara{
+    background-color: white;
+}
+
+seccion-oscura{
+    background-color: #FDF4E3;
+}
+
+.seccion .contenedor{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.imagen-inicio {
+    width: 100%;
+    max-width: 480px;
+    border: 1px solid #FDF4E3;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    background-color: #F0F0F0;
+}
+
+.boton{
+    background-color: #2980B9;
+    color: #FFFFFF;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tabla-menu{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabla-menu th,
+.tabla-menu td{
+    padding: 12px 16px;
+    border: 1px solid #27AE60;
+}
+
+.tabla-menu thead th{
+    background-color: #27AE60;
+    color: #FFFFFF;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+}
+
+.lista.razones{
+    text-align: left;
+    max-width: 420px;
+    margin: 16px auto 0 auto;
+    padding-left: 20px;
+}
+
+.horario{
+    max-width: 320px;
+    margin: 32px auto 0 auto;
+    padding: 20px 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #C0392B;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.horario h3{
+    border-bottom: 2px solid #C0392B;
+    padding-bottom: 8px;
+}
+
+.horario li{
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.volver{
+    text-align: center;
+    margin-top: 24px;
+    font-size: 14px;
+}
+
+.volver a{
+    color: #C0392B;
+}
+
+footer{
+    background-color: #E67E22;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+footer p{
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+#inicio p span{
+    color: #2980B9;
+    font-weight: bold;
+}
+
+nav > a{
+    color: #FFFFFF;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 10px;
+    padding-bottom: 10px;
+}
+
+#menu h2 + table {
+    margin-top: 20px;
+}
+
+td[colspan]{
+    text-align: center;
+    font-size: 12px;
+    background-color: white;
+}
+
+a[href^="mailto:"]{
+    color: #F1C40F;
+    font-weight: bold;
+}
+
+#inicio p::first-letter{
+    font-size: 2em;
+    color: #C0392B;
+}
+
+#nosotros p::first-line{
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#navegacion > a:hover{
+    color: #FDF4E3;
+    border-bottom: 2px solid #F1C40F;
+    transition: 0.3s all;
+}
+
+.boton:hover{
+    background-color: #1F618D;
+}
+
+.boton:active{
+    background-color: #154360;
+}
+
+.tabla-menu tbody tr:first-child{
+    border-top: 3.5px solid #145232;
+}
+
+.tabla-menu tbody tr:nth-child(2n){
+    background-color: white;
+}
+
+.tabla-menu tbody tr:nth-child(2n+1){
+    background-color: #FDF4E3;
+}
+
+
