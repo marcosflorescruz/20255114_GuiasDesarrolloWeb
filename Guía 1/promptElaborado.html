@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma Plaza | Espacio Vivo</title>
+    <!-- Importando tipografía robusta y elegante (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Importando FontAwesome para los íconos minimalistas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Paleta de colores y variables */
+        :root {
+            --azul-claro: #7fb3d5; /* Basado en tu referencia */
+            --azul-oscuro: #1b4f72;
+            --blanco: #ffffff;
+            --gris-claro: #f5f5f7; /* Gris estilo Apple para fondos secundarios */
+            --texto-oscuro: #1d1d1f;
+        }
+
+        /* Reseteo básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--blanco);
+            color: var(--texto-oscuro);
+            line-height: 1.5;
+        }
+
+        /* Navegación estilo Apple (Minimalista y sticky) */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparencia */
+            backdrop-filter: saturate(180%) blur(20px); /* Efecto vidrio/Apple */
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--azul-oscuro);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul-claro);
+        }
+
+        /* Hero Section (Sección Principal) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-oscuro) 100%);
+            /* Aquí puedes reemplazar el gradiente por la imagen de tu edificio usando:
+               background: linear-gradient(rgba(27, 79, 114, 0.5), rgba(127, 179, 213, 0.5)), url('ruta-a-tu-imagen.jpg') center/cover; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--blanco);
+            color: var(--azul-oscuro);
+            padding: 15px 30px;
+            border-radius: 30px; /* Estilo píldora como Apple */
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Sección de Amenidades (Manejada con prioridad al inicio) */
+        .features {
+            background-color: var(--blanco);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .feature-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 30px;
+            background-color: var(--gris-claro);
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--azul-claro);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--azul-oscuro);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Responsividad básica */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Aquí iría un menú hamburguesa en el futuro */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .features-container {
+                gap: 20px;
+            }
+
+            /* Sección Shops & Gastronomía */
+.shops-section {
+    padding: 100px 20px;
+    background-color: var(--blanco);
+    text-align: center;
+}
+
+.shops-section h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--texto-oscuro);
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+}
+
+.shops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Reemplaza la clase .shop-card anterior por estas nuevas: */
+.shop-card {
+    background-color: var(--blanco);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 24px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Esto asegura que la imagen respete los bordes redondeados */
+}
+
+.shop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.shop-img {
+    width: 100%;
+    height: 220px; /* Altura uniforme para que todas las tarjetas se vean iguales */
+    object-fit: cover; /* Evita que la imagen se estire o se deforme */
+}
+
+.shop-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.shop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.shop-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--azul-oscuro);
+    margin-bottom: 15px;
+}
+
+.shop-desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.shop-details {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--texto-oscuro);
+}
+
+.shop-details li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.shop-details i {
+    color: var(--azul-claro);
+    margin-top: 3px;
+}
+
+.shop-details a {
+    color: var(--azul-oscuro);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.shop-details a:hover {
+    text-decoration: underline;
+}
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">SOMA</a>
+            <ul class="nav-links">
+                <li><a href="#">Alquileres</a></li>
+                <li><a href="#shops">Shops & Gastronomía</a></li> <!-- Se agregó #shops -->
+                <li><a href="https://maps.app.goo.gl/6egoWKG3cmoyDXi97" target="_blank">Ubicación</a></li>
+                <li><a href="#">Mascotas</a></li>
+                <li><a href="mailto:somaplaza@gmail.com">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Principal (Hero) -->
+    <header class="hero">
+        <h1>Bienvenidos al vecindario.</h1>
+        <p>Un espacio vivo para conectar, relajarse y disfrutar.</p>
+        <a href="#explorar" class="btn">Descubre Soma</a>
+    </header>
+
+    <!-- Amenidades (Prioridad Alta - Subidas al principio) -->
+    <section class="features" id="explorar">
+        <div class="features-container">
+            <!-- Feature 1 -->
+            <div class="feature-box">
+                <i class="fa-solid fa-tree feature-icon"></i>
+                <h3>Conecta y Relaja</h3>
+                <p>Disfruta de nuestras áreas verdes con Wi-Fi gratuito de alta velocidad.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="feature-box">
+                <i class="fa-solid fa-paw feature-icon"></i>
+                <h3>Pet Friendly</h3>
+                <p>Tus mascotas son bienvenidas. Disfruta junto a ellos contiguo al parque.</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="feature-box">
+                <i class="fa-solid fa-bicycle feature-icon"></i>
+                <h3>Apto para Ciclistas</h3>
+                <p>Llega sobre ruedas. Contamos con cómodos bike racks disponibles para ti.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="shops-section" id="shops">
+    <h2>Shops & Gastronomía</h2>
+    <div class="shops-grid">
+        
+        <!-- Tarjeta GO green -->
+        <div class="shop-card">
+            <!-- Imagen agregada -->
+            <img src="https://tse3.mm.bing.net/th/id/OIP.kEOZ3Pq526AkD6_5c9GI5gHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="GO green" class="shop-img">
+            <div class="shop-content">
+                <h3 class="shop-title">GO green</h3>
+                <p class="shop-desc">Restaurante de comida saludable y nutritiva en concepto rápido y práctico para un estilo de vida que refleja salud emocional en nuestro cuerpo.</p>
+                <ul class="shop-details">
+                    <li><i class="fa-solid fa-clock"></i> <span>Lun - Sáb 7:30am – 9:30pm<br>Dom 7:30am – 9:00pm</span></li>
+                    <li><i class="fa-solid fa-phone"></i> <span>2289-8646 / 7014 4823</span></li>
+                    <li><i class="fa-solid fa-location-dot"></i> <span>Primer nivel</span></li>
+                    <li><i class="fa-solid fa-globe"></i> <a href="http://gogreensv.cyanstudio.com/" target="_blank">Sitio Web</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tarjeta La Biblioteca Café -->
+        <div class="shop-card">
+            <!-- Imagen agregada -->
+            <img src="https://tse4.mm.bing.net/th/id/OIP.zv8nTNQ2p84f1cm_JJDfMgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="La Biblioteca Café" class="shop-img">
+            <div class="shop-content">
+                <h3 class="shop-title">La Biblioteca Café</h3>
+                <p class="shop-desc">Coffee shop para disfrutar de una amena conversación o leer un buen libro junto a una deliciosa taza de café.</p>
+                <ul class="shop-details">
+                    <li><i class="fa-solid fa-clock"></i> <span>Lun - Vie 7:00am – 9:00pm<br>Sáb - Dom 8:00am – 9:00pm</span></li>
+                    <li><i class="fa-solid fa-phone"></i> <span>7837-1674 / 7129-9416</span></li>
+                    <li><i class="fa-solid fa-location-dot"></i> <span>Primer nivel</span></li>
+                    <li><i class="fa-brands fa-instagram"></i> <a href="#" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tarjeta MANTRA -->
+        <div class="shop-card">
+            <!-- Imagen agregada -->
+            <img src="https://tse4.mm.bing.net/th/id/OIP.TpK45v_w0sfhAFiZFaZl9AHaHL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="MANTRA Pilates Studio" class="shop-img">
+            <div class="shop-content">
+                <h3 class="shop-title">MANTRA Pilates Studio</h3>
+                <p class="shop-desc">Estudio de pilates donde cada participante puede encontrar paz interior, fuerza física y equilibrio mental en un ambiente acogedor y sereno.</p>
+                <ul class="shop-details">
+                    <li><i class="fa-solid fa-clock"></i> <span>Lun - Vie 5:00am – 9:00pm<br>Sáb 5:00am – 12:00pm</span></li>
+                    <li><i class="fa-solid fa-phone"></i> <span>7603-9194</span></li>
+                    <li><i class="fa-solid fa-location-dot"></i> <span>Primer nivel</span></li>
+                    <li><i class="fa-solid fa-globe"></i> <a href="http://www.mantrapilatessv.com" target="_blank">Sitio Web</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

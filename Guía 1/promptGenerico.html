@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma - Espacio Vivo</title>
+    <!-- Fuente moderna de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET Y VARIABLES --- */
+        :root {
+            --primary-color: #D4AF37; /* Color mostaza/dorado de "Alquileres" */
+            --primary-hover: #b5952f;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f9f9f9;
+            --font-main: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER Y NAVEGACIÓN --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 1rem 5%;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+        
+        .logo span {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        header.scrolled .logo {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        header.scrolled .nav-links a {
+            color: var(--text-dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Botón de Alquileres destacado */
+        .btn-rent {
+            background-color: var(--primary-color);
+            color: var(--text-dark) !important;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: background 0.3s ease;
+        }
+
+        .btn-rent:hover {
+            background-color: var(--primary-hover);
+            color: white !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        header.scrolled .menu-toggle {
+            color: var(--text-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            /* Aquí usamos tu imagen como fondo */
+            background-image: url('image_ca9ef9.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto Parallax */
+        }
+
+        /* Capa oscura sobre la imagen para que el texto sea legible */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--text-light);
+            color: var(--text-dark);
+        }
+
+        /* --- SECCIÓN DE CONTENIDO MUESTRA --- */
+        .features {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                color: var(--text-dark);
+                padding: 10px 0;
+            }
+
+            header .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA Y NAVEGACIÓN -->
+    <header id="main-header">
+        <nav>
+            <!-- Menú Izquierdo (Opcional reordenar) -->
+            <a href="#" class="logo">
+                soma
+                <span>Espacio Vivo</span>
+            </a>
+
+            <!-- Botón para móviles -->
+            <button class="menu-toggle" id="mobile-menu">
+                &#9776; <!-- Ícono de hamburguesa -->
+            </button>
+
+            <!-- Enlaces de navegación -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#alquileres" class="btn-rent">Alquileres</a></li>
+                <li><a href="#soma">Soma</a></li>
+                <li><a href="#shops">Shops & Gastronomía</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#mascotas">Mascotas</a></li>
+                <li><a href="#sostenibilidad">Sostenibilidad</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN HERO (IMAGEN PRINCIPAL) -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenidos al<br>Vecindario Soma</h1>
+            <a href="#shops" class="btn-primary">Descubre Soma</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EXTRA PARA COMPLETAR LA PÁGINA (Ejemplo) -->
+    <main>
+        <section id="soma" class="features">
+            <div class="feature-card">
+                <h3>Gastronomía Única</h3>
+                <p>Disfruta de una variedad de opciones culinarias en un ambiente rodeado de naturaleza y arquitectura moderna.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Pet Friendly</h3>
+                <p>Tu mejor amigo es bienvenido. Contamos con espacios diseñados para que tú y tu mascota disfruten al máximo.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Sostenibilidad</h3>
+                <p>Comprometidos con el medio ambiente, nuestra plaza está diseñada para convivir en armonía con la naturaleza.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- SCRIPTS PARA INTERACTIVIDAD -->
+    <script>
+        // Cambiar el estilo del header al hacer scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Menú hamburguesa para dispositivos móviles
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Cambiar el color del ícono al abrir el menú si estamos arriba del todo
+            if(window.scrollY <= 50) {
+                if(navLinks.classList.contains('active')){
+                    menuToggle.style.color = '#333';
+                } else {
+                    menuToggle.style.color = '#fff';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
