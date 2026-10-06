@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SOMA plaza, un espacio para conectar, disfrutar y descubrir.">
+  <title>SOMA plaza | Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="inicio">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <!-- NAVEGACIÓN -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="mark">S</span><span>SOMA plaza</span></a>
+      <button class="menu" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <ul class="links">
+        <li><a data-page="inicio" href="index.html">Inicio</a></li>
+        <li><a data-page="tiendas" href="tiendas.html">Tiendas</a></li>
+        <li><a data-page="ambiente" href="ambiente.html">Ambiente</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="mini" href="https://maps.app.goo.gl/6egoWKG3cmoyDXi97" target="_blank" rel="noopener">Ubicación</a>
+        <a class="mini" href="mailto:somaplaza@gmail.com">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="contenido" class="page">
+
+    <!-- HERO -->
+    <header class="hero container">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> Tu punto de encuentro</span>
+        <h1>Bienvenidos al <span class="accent">vecindario.</span></h1>
+        <p class="lead">Un espacio vivo para conectar, relajarse y disfrutar en medio de una propuesta práctica, cercana y contemporánea.</p>
+        <div class="cta-row">
+          <a class="btn" href="tiendas.html">Descubre las tiendas <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="btn dark" href="ambiente.html">Conoce el ambiente</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="tile tile-tree"><i class="fa-solid fa-tree"></i></div>
+        <div class="tile tile-paw"><i class="fa-solid fa-paw"></i></div>
+        <div class="tile tile-bike"><i class="fa-solid fa-bicycle"></i></div>
+        <div class="tile tile-cup"><i class="fa-solid fa-mug-hot"></i></div>
+      </div>
+    </header>
+
+    <!-- BENEFICIOS -->
+    <section class="section container" aria-labelledby="t-beneficios">
+      <div class="section-head">
+        <h2 id="t-beneficios">Todo lo que necesitas, <span class="accent">en un solo lugar.</span></h2>
+        <p>Organizamos la experiencia alrededor de gastronomía, bienestar y comunidad.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card feature">
+          <div class="icon"><i class="fa-solid fa-utensils"></i></div>
+          <h3>Sabores para disfrutar</h3>
+          <p>Opciones para comer saludable, tomar café y compartir una pausa.</p>
+        </article>
+        <article class="card feature">
+          <div class="icon"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>Bienestar cotidiano</h3>
+          <p>Espacios y servicios para fortalecer el cuerpo y encontrar equilibrio.</p>
+        </article>
+        <article class="card feature">
+          <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Un entorno que conecta</h3>
+          <p>Áreas para relajarse, trabajar, encontrarse y disfrutar del vecindario.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPLORA (bento) -->
+    <section class="explore" aria-labelledby="t-explora">
+      <div class="container explore-grid">
+        <div class="explore-head">
+          <h2 id="t-explora">Explora la plaza a tu ritmo.</h2>
+          <p>Cada sección te lleva a un lado distinto de SOMA plaza.</p>
+        </div>
+
+        <a class="card link-card lc-tiendas" href="tiendas.html">
+          <i class="fa-solid fa-store"></i>
+          <h3>Tiendas</h3>
+          <p>Conoce los locales, sus servicios y horarios.</p>
+        </a>
+        <a class="card link-card lc-ambiente" href="ambiente.html">
+          <i class="fa-solid fa-tree"></i>
+          <h3>Ambiente</h3>
+          <p>Áreas verdes, pet friendly y espacios para moverse en bici.</p>
+        </a>
+        <a class="card link-card lc-ubicacion" href="https://maps.app.goo.gl/6egoWKG3cmoyDXi97" target="_blank" rel="noopener">
+          <i class="fa-solid fa-location-dot"></i>
+          <h3>Ubicación</h3>
+          <p>Mira cómo llegar.</p>
+        </a>
+        <a class="card link-card lc-contacto" href="mailto:somaplaza@gmail.com">
+          <i class="fa-solid fa-envelope"></i>
+          <h3>Contacto</h3>
+          <p>Escríbenos a somaplaza@gmail.com</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>SOMA plaza</strong>
+        <p>Un espacio vivo para conectar, relajarse y disfrutar.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://maps.app.goo.gl/6egoWKG3cmoyDXi97" target="_blank" rel="noopener">Ver ubicación</a>
+        <a href="mailto:somaplaza@gmail.com">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
