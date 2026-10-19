@@ -24,9 +24,14 @@ function generarNumeroAleatorio() {
       mensaje = `Su numero de intentos ha terminado.
         El numero oculto era: ${numeroAleatorio}. Refresque la página para volver a jugar.`;
     } else {
-      mensaje = `Vuelve a intentar. Quedan ${
-        numeroIntentos - intentos
-      } intentos`;
+      let pista = "";
+      if (numero < numeroAleatorio) {
+        pista = "El número que buscas es MAYOR.";
+      } else {
+        pista = "El número que buscas es MENOR."
+      }
+
+      mensaje = `Vuelve a intentar. ${pista} Quedan ${numeroIntentos - intentos} intentos`;
     }
 
     //aumentamos el valor de los intentos
