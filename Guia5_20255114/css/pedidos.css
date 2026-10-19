@@ -1,0 +1,180 @@
+:root {
+    --color-negro: #121212;
+    --color-negro-suave: #1E1E1E;
+    --color-vino: #722F47;
+    --color-vino-hover: #8C3B45;
+    --color-cafe: #4E342E;
+    --color-cafe-claro: #6f4E37;
+    --color-blanco: #FFFFFF;
+    --color-gris-claro: #E0E0E0;
+}
+
+body {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+
+.header-cafeteria {
+    background: linear-gradient(135deg, var(--color-cafe) 0%, var(--color-vino) 100%);
+    border-bottom: 3px solid var(--color-blanco);
+    color: var(--color-blanco);
+}
+
+.custom-card {
+    background-color: var(--color-negro-suave);
+    border: 1px solid var(--color-cafe-claro);
+    border-radius: 0.75rem;
+    color: var(--color-blanco);
+}
+
+.custom-card-header-vino {
+    background-color: var(--color-vino);
+    color: var(--color-blanco);
+    border-bottom: 2px solid var(--color-blanco);
+    font-weight: 600;
+}
+
+.custom-card-header-cafe {
+    background-color: var(--color-cafe);
+    color: var(--color-blanco);
+    border-bottom: 2px solid var(--color-blanco);
+    font-weight: 600;
+}
+
+.form-label {
+    color: var(--color-blanco);
+    font-weight: 500;
+}
+
+.form-control {
+    background-color: var(--color-negro);
+    border: 1px solid var(--color-cafe-claro);
+    color: var(--color-blanco);
+}
+
+.form-control:focus {
+    background-color: #181818;
+    border-color: var(--color-vino);
+    color: var(--color-blanco);
+    box-shadow: 0 0 0 0.25rem rgba(114, 47, 55, 0.4);
+}
+
+.form-control::placeholder {
+    color: #888888;
+}
+
+.input-group-text {
+    background-color: var(--color-cafe);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-cafe-claro);
+}
+
+.btn-vino {
+    background-color: var(--color-vino);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-blanco);
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-vino:hover, .btn-vino:focus {
+    background-color: var(--color-vino-hover);
+    color: var(--color-blanco);
+    transform: translateY(-1px);
+}
+
+.btn-cafe {
+    background-color: var(--color-cafe);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-blanco);
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-cafe:hover, .btn-cafe:focus {
+    background-color: var(--color-cafe-claro);
+    color: var(--color-blanco);
+    transform: translateY(-1px);
+}
+
+.btn-outline-blanco {
+    background-color: transparent;
+    color: var(--color-blanco);
+    border: 1px solid var(--color-blanco);
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-blanco:hover, .btn-outline-blanco:focus {
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+.btn-negro-danger {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-vino);
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-negro-danger:hover {
+    background-color: var(--color-vino);
+    color: var(--color-blanco);
+    border-color: var(--color-blanco);
+}
+
+.table-custom {
+    color: var(--color-blanco);
+    border-color: var(--color-cafe-claro);
+    margin-bottom: 0;
+}
+
+.table-custom thead th {
+    background-color: var(--color-cafe);
+    color: var(--color-blanco);
+    border-bottom: 2px solid var(--color-blanco);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.taler-custom tbody tr {
+    background-color: var(--color-negro-suave);
+    border-bottom: 1px solid var(--color-cafe);
+    transition: background-color 0.15s ease;
+}
+
+.table-custom tbody tr:hover {
+    background-color: rgba(114, 47, 55, 0.25);
+    color: var(--color-blanco);
+}
+
+.table-custom td {
+    color: var(--color-negro-suave);
+    vertical-align: middle;
+}
+
+.indicador-box {
+    background: linear-gradient(135deg, var(--color-negro) 0%, var(--color-cafe) 100%);
+    border: 1px solid var(--color-blanco);
+    border-left: 5px solid var(--color-vino);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    color: var(--color-blanco);
+}
+
+.indicador-valor {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-blanco);
+}
+
+.alert-vino {
+    background-color: rgba(114, 47, 55, 0.9);
+    color: var(--color-blanco);
+    border: 1px solid var(--color-blanco);
+}
