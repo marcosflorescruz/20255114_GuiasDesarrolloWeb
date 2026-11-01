@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/stylesFunciones.css" rel="stylesheet" />
+    <link rel="icon" href="../img/js.png" sizes="32x32" type="image/png" />
+    <title>Validación Ficha de Estudiante</title>
+</head>
+<body>
+    <header>
+        <div class="px-3 py-2 text-bg-dark fixed-top">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="../indexFunciones.html"
+                        class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+                        <img src="../img/js.png" alt="" width="32" height="32" class="me-2" />
+                    </a>
+                    <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-bar">
+                        <li class="text-center">
+                            <a href="./recursividad.html" class="nav-link text-white">
+                                <i class="bi bi-arrow-clockwise bi-2 d-block"></i> Recursividad
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="./tabla.html" class="nav-link text-white">
+                                <i class="bi bi-table bi-2 d-block"></i> Creando una Tabla
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="./formulario.html" class="nav-link text-white">
+                                <i class="bi bi-ui-checks bi-2 d-block"></i> Formulario
+                            </a>
+                        </li>
+                        <li class="text-center">
+                            <a href="./fichaEstudiante.html" class="nav-link text-white">
+                                <i class="bi bi-person-badge bi-2 d-block"></i> Ficha Estudiante
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-lg pt-5">
+        <div class="row">
+            <div class="col-12 shadow-lg p-4 mt-5 bg-body rounded">
+                <h3 class="mb-3">Ficha de Estudiante (Validación con Expresiones Regulares)</h3>
+                <form id="idFormEstudiante" novalidate>
+                    <div class="row g-3">
+                        <!-- 1. Carnet -->
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idTxtCarnet" placeholder="AB001" maxlength="5" />
+                                <label for="idTxtCarnet">Carnet (Ej: AB001)</label>
+                                <div class="invalid-feedback">Formato inválido. Use 2 letras y 3 números (Ej: AB001).</div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Nombre completo -->
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idTxtNombreCompleto" placeholder="Nombre completo" />
+                                <label for="idTxtNombreCompleto">Nombre completo (Solo letras)</label>
+                                <div class="invalid-feedback">El nombre solo debe contener letras y espacios.</div>
+                            </div>
+                        </div>
+
+                        <!-- 3. DUI -->
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idTxtDui" placeholder="00000000-0" maxlength="10" />
+                                <label for="idTxtDui">Número de DUI (########-#)</label>
+                                <div class="invalid-feedback">Formato de DUI inválido. Use ########-#.</div>
+                            </div>
+                        </div>
+
+                        <!-- 4. NIT -->
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idTxtNit" placeholder="0000-000000-000-0" maxlength="17" />
+                                <label for="idTxtNit">Número de NIT (####-######-###-#)</label>
+                                <div class="invalid-feedback">Formato de NIT inválido. Use ####-######-###-#.</div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Fecha de nacimiento -->
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idTxtFechaNac" placeholder="dd/mm/aaaa" maxlength="10" />
+                                <label for="idTxtFechaNac">Fecha de nacimiento (dd/mm/aaaa)</label>
+                                <div class="invalid-feedback">Ingrese una fecha válida en formato dd/mm/aaaa.</div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Correo electrónico -->
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="idTxtCorreo" placeholder="correo@ejemplo.com" />
+                                <label for="idTxtCorreo">Correo electrónico</label>
+                                <div class="invalid-feedback">Ingrese un correo electrónico válido.</div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Edad -->
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="idTxtEdad" placeholder="Edad" maxlength="3" />
+                                <label for="idTxtEdad">Edad (Solo números)</label>
+                                <div class="invalid-feedback">La edad debe contener únicamente números.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 pt-2">
+                            <button id="idBtnValidar" type="button" class="btn btn-success">
+                                <i class="bi bi-check2-circle"></i> Validar y Registrar
+                            </button>
+                            <button id="idBtnLimpiarFicha" type="button" class="btn btn-secondary">
+                                <i class="bi bi-eraser"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-12 shadow-lg p-4 mt-4 mb-5 bg-body rounded">
+                <h3>Resultado de la validación</h3>
+                <div id="idResultadoFicha" class="mt-2">Ningún estudiante validado aún.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/fichaEstudiante.js" defer></script>
+</body>
+</html>

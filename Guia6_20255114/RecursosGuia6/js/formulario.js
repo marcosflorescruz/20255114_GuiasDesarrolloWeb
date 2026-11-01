@@ -21,15 +21,19 @@ const mensaje = document.getElementById("idMensaje");
 //Componente modal
 const idModal = document.getElementById("idModal");
 
-//Arreglo global de pacientes
-let arrayPaciente = [];
+// --- ACTIVIDAD 1 Y 2: Arreglo global con persistencia en LocalStorage y control de edición ---
+let arrayPaciente = JSON.parse(localStorage.getItem("pacientes")) || [];
+let indiceEdicion = -1; // -1 indica modo "Agregar", >= 0 indica el índice que se está editando
+
+const guardarEnLocalStorage = () => {
+    localStorage.setItem("pacientes", JSON.stringify(arrayPaciente));
+};
 
 /*
 Creando una funcion para que limpie el formulario
 siempre que se cargue la pagina o cuando se presione
 el boton limpiar del formulario
 */
-
 const limpiarForm = () => {
     inputNombre.value = "";
     inputApellido.value = "";
@@ -40,16 +44,19 @@ const limpiarForm = () => {
     inputDireccion.value = "";
     inputNombrePais.value = "";
 
+    // Restaurar estado de edición al limpiar
+    indiceEdicion = -1;
+    buttonAgregarPaciente.innerHTML = `<i class="bi bi-person-plus-fill"></i> Guardar Datos`;
+
     inputNombre.focus();
 };
 
 /*
-Funcion para validar el ingreso del paciente
+Funcion para validar el ingreso o actualización del paciente
 */
-
 const addPaciente = function () {
-    let nombre = inputNombre.value;
-    let apellido = inputApellido.value;
+    let nombre = inputNombre.value.trim();
+    let apellido = inputApellido.value.trim();
     let fechaNacimiento = inputFechaNacimiento.value;
     let sexo =
         inputRdMasculino.checked == true
@@ -59,7 +66,7 @@ const addPaciente = function () {
             : "";
     let pais = cmbPais.value;
     let labelPais = cmbPais.options[cmbPais.selectedIndex].text;
-    let direccion = inputDireccion.value;
+    let direccion = inputDireccion.value.trim();
 
     if (
         nombre != "" &&
@@ -69,18 +76,34 @@ const addPaciente = function () {
         pais != 0 &&
         direccion != ""
     ) {
-        //Agregando informacion al arreglo paciente
-        arrayPaciente.push(
-            new Array(nombre, apellido, fechaNacimiento, sexo, labelPais, direccion)
+        const datosPaciente = new Array(
+            nombre,
+            apellido,
+            fechaNacimiento,
+            sexo,
+            labelPais,
+            direccion
         );
 
-        //Asignando un mensaje a nuestra notificacion
-        mensaje.innerHTML = "Se ha registrado un nuevo paciente";
+        if (indiceEdicion === -1) {
+            // Modo Agregar nuevo paciente
+            arrayPaciente.push(datosPaciente);
+            mensaje.innerHTML = "Se ha registrado un nuevo paciente";
+        } else {
+            // ACTIVIDAD 1: Modo Editar paciente existente
+            arrayPaciente[indiceEdicion] = datosPaciente;
+            mensaje.innerHTML = "Se han actualizado los datos del paciente";
+        }
+
+        // ACTIVIDAD 2: Guardar cambios en LocalStorage
+        guardarEnLocalStorage();
+
         //Llamando al componente de Bootstrap
         toast.show();
 
-        //Limpiando formulario
+        //Limpiando formulario y actualizando tabla
         limpiarForm();
+        imprimirPacientes();
     } else {
         //Asignando un mensaje a nuestra notificacion
         mensaje.innerHTML = "Faltan campos por completar";
@@ -103,11 +126,11 @@ function imprimirFilas() {
                     <td>${element[3]}</td>
                     <td>${element[4]}</td>
                     <td>${element[5]}</td>
-                    <td>
-                        <button id="idBtnEditar${contador}" type="button" class="btn btn-primary" alt="Editar">
+                    <td class="text-center">
+                        <button id="idBtnEditar${contador}" type="button" class="btn btn-primary" alt="Editar" title="Editar paciente">
                             <i class="bi bi-pencil-square"></i>
                         </button>
-                        <button id="idBtnEliminar${contador}" type="button" class="btn btn-danger" alt="Eliminar">
+                        <button id="idBtnEliminar${contador}" type="button" class="btn btn-danger" alt="Eliminar" title="Eliminar paciente">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
                     </td>
@@ -118,6 +141,13 @@ function imprimirFilas() {
 }
 
 const imprimirPacientes = () => {
+    const contenedorTabla = document.getElementById("idTablaPacientes");
+
+    if (arrayPaciente.length === 0) {
+        contenedorTabla.innerHTML = "Ninguno";
+        return;
+    }
+
     let $table = `<div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered">
                         <tr>
@@ -132,21 +162,91 @@ const imprimirPacientes = () => {
                         </tr>
                         ${imprimirFilas()}
                     </table>
-                </div>
-                `;
-    document.getElementById("idTablaPacientes").innerHTML = $table;
+                </div>`;
+
+    contenedorTabla.innerHTML = $table;
+
+    // ACTIVIDAD 1: Asignar eventos a cada botón Editar y Eliminar generado en la tabla
+    arrayPaciente.forEach((_, index) => {
+        const contador = index + 1;
+        const btnEditar = document.getElementById(`idBtnEditar${contador}`);
+        const btnEliminar = document.getElementById(`idBtnEliminar${contador}`);
+
+        btnEditar.addEventListener("click", () => editarPaciente(index));
+        btnEliminar.addEventListener("click", () => eliminarPaciente(index));
+    });
+};
+
+// ACTIVIDAD 1: Función para cargar los datos de un paciente en el formulario y editarlo
+const editarPaciente = (index) => {
+    const paciente = arrayPaciente[index];
+
+    inputNombre.value = paciente[0];
+    inputApellido.value = paciente[1];
+    inputFechaNacimiento.value = paciente[2];
+
+    if (paciente[3] === "Hombre") {
+        inputRdMasculino.checked = true;
+        inputRdFemenino.checked = false;
+    } else if (paciente[3] === "Mujer") {
+        inputRdFemenino.checked = true;
+        inputRdMasculino.checked = false;
+    }
+
+    // Buscar el país por su texto dentro del <select>
+    let paisEncontrado = false;
+    for (let i = 0; i < cmbPais.options.length; i++) {
+        if (cmbPais.options[i].text === paciente[4]) {
+            cmbPais.selectedIndex = i;
+            paisEncontrado = true;
+            break;
+        }
+    }
+    // Si el país fue agregado dinámicamente en una sesión previa, lo recreamos en el select
+    if (!paisEncontrado) {
+        let option = document.createElement("option");
+        option.textContent = paciente[4];
+        option.value = cmbPais.children.length + 1;
+        cmbPais.appendChild(option);
+        cmbPais.value = option.value;
+    }
+
+    inputDireccion.value = paciente[5];
+
+    // Activamos modo edición
+    indiceEdicion = index;
+    buttonAgregarPaciente.innerHTML = `<i class="bi bi-pencil-square"></i> Actualizar Datos`;
+    inputNombre.focus();
+};
+
+// ACTIVIDAD 1 y 2: Función para eliminar un paciente del arreglo y actualizar LocalStorage
+const eliminarPaciente = (index) => {
+    arrayPaciente.splice(index, 1);
+    guardarEnLocalStorage();
+
+    // Si se estaba editando el paciente eliminado, limpiamos el formulario
+    if (indiceEdicion === index) {
+        limpiarForm();
+    } else if (indiceEdicion > index) {
+        indiceEdicion--;
+    }
+
+    imprimirPacientes();
+    mensaje.innerHTML = "Paciente eliminado correctamente";
+    toast.show();
 };
 
 // Contador global de los option correspondiente
 // al select (cmb) pais
 let contadorGlobalOption = cmbPais.children.length;
 const addPais = () => {
-    let paisNew = inputNombrePais.value;
+    let paisNew = inputNombrePais.value.trim();
 
     if (paisNew != "") {
         // Creando nuevo option con la API DOM
         let option = document.createElement("option");
         option.textContent = paisNew;
+        contadorGlobalOption = cmbPais.children.length;
         option.value = contadorGlobalOption + 1;
 
         //Agregando el nuevo option en el select
@@ -189,3 +289,4 @@ idModal.addEventListener("shown.bs.modal", () => {
 
 //Ejecutar funcion al momento de cargar la pagina HTML
 limpiarForm();
+imprimirPacientes(); // Muestra los pacientes guardados en LocalStorage al abrir la página
